@@ -16,7 +16,7 @@
 
   <!--Open Graph Title-->
   
-      <meta property="og:title" content="游在东京">
+      <meta property="og:title" content="quick生成二维码示例">
   
   <!--Open Graph Description-->
   
@@ -33,7 +33,7 @@
 
   <!-- Title -->
   
-  <title>游在东京 - Panda&#39;s Playground</title>
+  <title>quick生成二维码示例 - Panda&#39;s Playground</title>
 
 
   <link rel="shortcut icon" href="https://hexo.io/icon/favicon-96x96.png">
@@ -113,7 +113,7 @@
         <!-- Title date & tags -->
         <div class="post-header">
           <h1 class="entry-title">
-            游在东京
+            quick生成二维码示例
             
           </h1>
           <p class="posted-on">
@@ -127,16 +127,11 @@
         </div>
         <!-- Post Main Content -->
         <div class="entry-content has_line_number">
-          <blockquote>
-<p>东京东京（Tokyo）是日本国的首都，是亚洲第一大城市，世界第二大城市。全球最大的经济中心之一。东京的著名观光景点有东京铁塔、皇居、国会议事堂、浅草寺、浜离宫、上野公园与动物园、葛西临海公园、台场与彩虹大桥、东京迪士尼乐园、代代木公园、日比谷公园、新宿御苑、幕张奥特莱斯（outlets）、奥多摩湖、Hello kitty 乐园、明治神宫、忍野八海、池袋、上野公园、东映动漫Gallery、涩谷、升仙峡、丰田汽车会馆、筑地市场、千鸟之渊、秋叶原、二重桥、隅田公园、滨离宫庭园 Tsukiji鱼市等。</p>
+          <p><img src="/images/pasted-0.png" alt></p>
+<blockquote>
+<p>引用的第三方库：<a href="http://lua-users.org/wiki/LibrariesAndBindings" target="_blank" rel="noopener">http://lua-users.org/wiki/LibrariesAndBindings</a></p>
 </blockquote>
-<h3 id="晴空塔"><a href="#晴空塔" class="headerlink" title="晴空塔"></a>晴空塔</h3><ul>
-<li>东京第一高塔</li>
-</ul>
-<h3 id="浅草寺"><a href="#浅草寺" class="headerlink" title="浅草寺"></a>浅草寺</h3><ul>
-<li>人气祈福祈愿首选地</li>
-</ul>
-
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--quick生成二维码示例（生成多个会影响性能）</span></span><br><span class="line"><span class="keyword">local</span> BASE_WIDTH = <span class="number">5</span></span><br><span class="line"><span class="keyword">local</span> SQUARE_SIZE = <span class="number">11</span></span><br><span class="line"><span class="keyword">local</span> position = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> qrcodeEncode = <span class="built_in">require</span>(<span class="string">"app.third.QREncode"</span>) <span class="comment">--lua第三方库QRCode</span></span><br><span class="line"><span class="keyword">local</span> ret, qrCodeTable = qrcodeEncode.qrcode(<span class="string">"http://111.230.20.34:38102/GServer/getServerListName?gameId=10004&amp;groupName=android&amp;channelName=200130012&amp;page=1"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> qrCodeNode = display.newNode()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span>, #qrCodeTable <span class="keyword">do</span></span><br><span class="line">	<span class="keyword">for</span> j = <span class="number">1</span>, #qrCodeTable <span class="keyword">do</span></span><br><span class="line">		<span class="keyword">local</span> col = i - <span class="number">1</span></span><br><span class="line">		<span class="keyword">local</span> row = j - <span class="number">1</span></span><br><span class="line">		<span class="keyword">local</span> info = qrCodeTable[i][j]</span><br><span class="line">		<span class="keyword">local</span> color = info &gt; <span class="number">0</span> <span class="keyword">and</span> cc.c4f(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>) <span class="keyword">or</span> cc.c4f(<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">		<span class="keyword">local</span> shape = display.newRect(cc.rect(position + col * BASE_WIDTH, position + row * BASE_WIDTH, BASE_WIDTH, BASE_WIDTH), &#123;fillColor = color, borderWidth = <span class="number">0</span>, borderColor = color&#125;)</span><br><span class="line">		qrCodeNode:addChild(shape)</span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">qrCodeNode:setPosition(display.cx - <span class="number">200</span>, display.cy)</span><br></pre></td></tr></table></figure>
         </div>
       </article>
     </div>
@@ -151,8 +146,8 @@
     <script type="text/javascript">
     var disqus_config = function () {
           this.page.url = window.location.href;
-          this.page.identifier = 'post-Travel-To-Japan';
-          this.page.title = '游在东京';
+          this.page.identifier = 'post-quick生成二维码示例';
+          this.page.title = 'quick生成二维码示例';
       };
     </script>
     <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
@@ -166,12 +161,12 @@
     <div class="nav-links">
       
         <div class="nav-previous">
-          <a href="/2019/04/13/quick生成二维码示例/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一页</a>
+          <a href="/2019/05/29/乔布斯——从平凡直至伟大/" rel="prev"><span class="meta-arraw meta-arraw-left"></span> 上一页</a>
         </div>
       
       
         <div class="nav-next">
-          <a href="/2019/04/13/hello-world/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
+          <a href="/2019/04/13/Travel-To-Japan/" rel="prev">下一页 <span class="meta-arraw meta-arraw-right"></span></a>
         </div>
       
     </div>
@@ -240,7 +235,7 @@
   var disqus_shortname = 'philosophypanda';
 
   
-  var disqus_url = 'http://yoursite.com/2019/04/13/Travel-To-Japan/';
+  var disqus_url = 'http://yoursite.com/2019/04/13/quick生成二维码示例/';
   
 
   (function(){
